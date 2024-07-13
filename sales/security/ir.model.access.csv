@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+sales.access_sales_second,access_sales_second,sales.model_sales_second,base.group_user,1,1,1,1
+sales.access_cancel_wizards,access_cancel_wizards,sales.model_cancel_wizards,base.group_user,1,1,1,1
+sales.access_wizards_cancel,access_wizards_cancel,sales.model_wizards_cancel,base.group_user,1,1,1,1
+sales.access_crm_wizards,access_crm_wizards,sales.model_crm_wizards,base.group_user,1,1,1,1
+sales.access_delivery_order,access_delivery_order,sales.model_delivery_order,base.group_user,1,1,1,1

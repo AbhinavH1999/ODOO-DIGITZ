@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <report
+               id="report_digitz_card"
+              string="print pdf"
+              model="digitz.document"
+              report_type="qweb-pdf"
+              name="digitz@document.report_digitz"
+              file="digitz@document.report_digitz"/>
+
+<!--    <report id="report_sales_card"-->
+<!--        string="Sale Quotation"-->
+<!--        models="sale.order"-->
+<!--        report_type="qweb-pdf"-->
+<!--        name="sales.report_custom_template"-->
+<!--        file="sales.report_custom_template"/>-->
+
+
+
+
+
+</odoo>

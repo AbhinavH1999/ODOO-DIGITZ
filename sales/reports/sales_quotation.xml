@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="weblearns-layout">
+        <t t-call="web.html_container">
+            <div class="header" style="margin-top:-10px;">
+                <img src='/sales/static/src/img/header.jpeg' style="max-width: 100%; height: auto;margin-right:2px;"/>
+            </div>
+            <div class="article o_report_layout_standard">
+                <t t-out="0"/>
+            </div>
+
+            <div class="footer o_standard_footer" style="margin-left:-20px;margin-right:-10px;margin-top:100px;">
+                        <div class="pages" style="margin-bottom:10px;"> <center>
+Page:
+
+<span class="page"/>/<span class="topage"/>
+
+</center>
+                            </div>
+               <div class="row" style="margin-top:-10px;" >
+
+                    <img src='/sales/static/src/img/WhatsApp Image 2024-03-15 at 3.32.14 PM.jpeg' style="max-width: 100%; height: auto;"/>
+                    <br/>
+
+
+
+
+                </div>
+            </div>
+
+        </t>
+    </template>
+
+    <template id="report_sales">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+
+
+                <t t-call="sales.weblearns-layout">
+
+
+
+
+                    <div class="page">
+                        <style>
+                            tr{
+                            font-size:18px;
+                            }
+                        </style>
+                        <table class="table table-sm o_main_table border border-collapse"
+                               style="border: 2px solid black;" name="order_line">
+                            <tr style="color:blue; font-size:20px;">
+                                <td>
+                                    <strong>Attn :</strong>
+                                </td>
+                                <td style="padding-right:200px;">
+                                    <t t-esc="doc.partner_id.name"/>
+                                </td>
+
+                                <td>
+                                    <strong>From:</strong>
+                                </td>
+                                <td>TESTRON GROUP</td>
+                            </tr>
+                            <tr style="color:blue;">
+                                <td>
+                                    <strong>Company :</strong>
+                                </td>
+                                <td style="padding-right:10px;">
+                                    <span t-field="doc.partner_id"/>
+                                </td>
+
+                                <td>
+                                    <strong>P/I No:</strong>
+                                </td>
+                                <td>
+                                    <t t-esc="doc.name"/>
+                                </td>
+
+                            </tr>
+                            <tr style="color:blue;">
+                                <td>
+                                    <strong>Tel</strong>
+                                </td>
+                                <td>
+                                    <t t-esc="doc.partner_id.phone"/>
+                                </td>
+
+                                <td>
+                                    <strong>PO/I No :</strong>
+                                </td>
+                                <td></td>
+
+                            </tr>
+                            <tr style="color:blue;">
+                                <td>
+                                    <strong>Fax</strong>
+                                </td>
+                                <td></td>
+
+                                <td cell-padding="10px">
+                                    <strong>Date</strong>
+                                </td>
+                                <td>
+                                    <t t-esc="doc.date_order"/>
+                                </td>
+
+                            </tr>
+                            <tr style="color:blue;">
+                                <td>
+                                    <strong>Email</strong>
+                                </td>
+                                <td>
+                                    <t t-esc="doc.partner_id.email"/>
+                                </td>
+
+                                <td>
+                                    <strong>Valid until:</strong>
+                                </td>
+                                <td><t t-esc="doc.validity_date"/></td>
+
+                            </tr>
+                        </table>
+
+                    </div>
+
+
+                    <div>
+                        <table class="table table-sm o_main_table border border-collapse"
+                               style="border: 1px solid black;" name="order_line">
+                            <tr style="background-color:#ab0a3a;color:white;">
+                                <th style="padding-right:1px;">
+                                    <strong>Ship To</strong>
+                                </th>
+                                <th>
+                                    <strong>Bill To</strong>
+                                </th>
+
+                            </tr>
+                            <tr style="border: 1px ; color:blue;">
+                                <td style="padding-right:1px;">
+                                    <t t-esc="doc.partner_id.name"/>
+                                </td>
+                                <td>
+                                    <t t-esc="doc.partner_id.name"/>
+                                </td>
+                            </tr>
+
+
+                        </table>
+                    </div>
+                    <div class="row">
+
+                            <strong>
+                                <span>Orderlines</span>
+                            </strong>
+                            <style>
+
+                                td{
+                                border: 1px solid #ab0a3a ;
+                                }
+                                th
+                                {
+                                border:1px solid #ab0a3a;
+                                }
+
+                            </style>
+                    </div>
+
+                        <div>
+
+                            <table class="table table-sm o_main_table border border-collapse"
+                                   style="border: 1px solid black;" name="order_line">
+
+                                    <tr style="background-color:#ab0a3a; color:white;">
+                                        <th name="product_vartientS" class="text-left">
+                                            <span>SI NO</span>
+                                        </th>
+
+                                        <th name="product_vartient" class="text-left">
+                                            <span>Product Code</span>
+                                        </th>
+
+                                        <th name="product_Product" class="text-left">
+                                            <span>Product</span>
+                                        </th>
+
+                                        <th name="product_Description" class="text-left">
+                                            <span>Description</span>
+                                        </th>
+
+                                        <th name="product_Quantity" class="text-left">
+                                            <span>Quantity</span>
+                                        </th>
+
+                                        <th name="product_price" class="text-left">
+                                            <span>Unity price</span>
+                                        </th>
+
+                                        <!--                                <th name="product_Taxes" class="text-left">-->
+                                        <!--                                    <span>Taxes</span>-->
+                                        <!--                                </th>-->
+
+                                        <th name="product_Subtotal" class="text-left">
+                                            <span>Subtotal</span>
+                                        </th>
+
+                                    </tr>
+
+
+                                <t t-set="total" t-value="0"/>
+                                <t t-set="count" t-value="0"/>
+                                <t t-foreach="doc.order_line" t-as="line">
+                                    <t t-set="total" t-value="total+line.price_subtotal"/>
+                                    <t t-set="count" t-value="count+1"/>
+                                    <tr border="1" style="border: 1px solid black; color:blue;">
+                                        <td>
+                                            <t t-esc="count"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.product_id.name"/>
+                                        </td>
+
+                                        <td>
+                                            <span t-field="line.product_template_id.name"/>
+                                        </td>
+
+                                        <td>
+                                            <span t-field="line.name"/>
+                                        </td>
+
+
+                                        <td>
+                                            <span t-field="line.product_uom_qty"/>
+                                        </td>
+
+                                        <td>
+                                            <span t-field="line.price_unit"/>
+                                        </td>
+
+                                        <!--                                <td>-->
+                                        <!--                                    <span t-field="line.tax_id.id"/>-->
+                                        <!--                                </td>-->
+
+                                        <td>
+                                            <span t-field="line.price_subtotal"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                                <tr style="color:blue;">
+                                    <td colspan="5">
+
+                                    </td>
+                                    <td>
+                                        <strong>Total</strong>
+                                    </td>
+
+                                    <td>
+                                        <t t-esc="total"/>
+                                    </td>
+
+                                </tr>
+                                <tr style="color:blue;">
+                                    <td colspan="7">Amount in words:
+                                        <t t-esc="doc.currency_id.amount_to_text(doc.amount_total)"/>
+
+
+                                    </td>
+
+
+                                </tr>
+
+                            </table>
+                        </div>
+
+               </t>
+                <t t-call="sales.report_content"> </t>
+
+                </t>
+            </t>
+
+</template>
+<!--                     <p style="page-break-before:always;"> </p>-->
+    <template id="report_content">
+        <t t-call="web.html_container">
+
+            <t t-foreach="docs" t-as="doc">
+
+                <t t-call="sales.weblearns-layout">
+
+                    <div class="new" style="padding-top:360px;">
+
+                    <div class="page" style="padding-top:10px;">
+
+                        <div class="pages">
+
+                            <table class="table table-sm o_main_table border border-collapse"
+                                   style="border: 1px solid black;" name="order_line">
+                                <thead>
+                                    <tr style="background-color:#ab0a3a; color:white;">
+                                        <th name="product_vartientS" class="text-left" colspan="7" style="text-align:left;">
+                                            Customer Remarks:
+                                        </th>
+
+
+                                    </tr>
+
+                                </thead>
+
+
+                                    <tr border="1" style="border: 1px solid black; color:blue;" >
+                                        <td colspan="6" style="padding-bottom:200px;">
+
+                                        </td>
+                                    </tr>
+                            </table>
+                            </div><div class="sub" style="padding-top:15px;">
+                                   <table class="table table-sm o_main_table border border-collapse"
+                                   style="border: 1px solid black;" name="order_line">
+
+                                    <tr border="1" style="border: 1px solid black; color:blue;" >
+                                        <td style="padding-bottom:75px; background-color:#f5a9a9; padding-top:37px;" width="25%">
+                                            Completed by:
+                                        </td>
+                                        <td width="35%" style="padding-top:36px;"><t t-esc="doc.user_id.name"/></td>
+                                        <td  width="15%" style=" background-color:#f5a9a9; padding-top:36px;">Signature</td>
+                                        <td width="70px" style="padding-top:33px;"><t t-esc="doc.signature"/></td>
+                                    </tr>
+                            </table>
+                        </div>
+                        <div class="sub" style="padding-top:15px;">
+                                   <table class="table table-sm o_main_table border border-collapse"
+                                   style="border: 1px solid black;" name="order_line">
+
+                                                      <tr border="1" style="border: 1px solid black; color:blue;" >
+                                           <td style="padding-bottom:75px; background-color:#f5a9a9; padding-top:36px;" width="25%">
+                                            Approved by:
+                                        </td>
+                                        <td width="35%" style="padding-top:36px;"></td>
+                                        <td  width="15%" style=" background-color:#f5a9a9; padding-top:36px;">Signature</td>
+                                        <td width="70px" style="padding-top:36px;"></td>
+                                    </tr>
+                            </table>
+                        </div>
+
+                    </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+
+
+    </template>
+<!--    <template id="report_product">-->
+<!--   <t t-call="web.html_container">-->
+<!--       <t t-call="sales.report_sales">-->
+<!--           <t t-call="report_sales_">-->
+<!--       <t t-foreach="docs" t-as="o">-->
+<!--           <t t-call="sales.weblearns-layout">-->
+<!--                           <div class="article o_report_layout_standard">-->
+<!--                                 <p style="page-break-before:always;"> </p>-->
+<!--                               <div>-->
+
+<!--                               </div>-->
+<!--            </div>-->
+
+<!--           </t>-->
+<!--       </t>-->
+<!--           </t>-->
+<!--   </t></t>-->
+<!--</template>-->
+<!--    <template id="report_custom_template">-->
+<!--          <t t-call="web.html_container">-->
+<!--        <t t-call="sales.weblearns-layout">-->
+<!--        <t t-call="sales.report_sales"></t>-->
+<!--            <t t-call="sales.report_content"></t>-->
+<!--            </t></t>-->
+<!--    </template>-->
+</odoo>

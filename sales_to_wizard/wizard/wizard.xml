@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="wizard_sales" model="ir.actions.act_window">
+        <field name="name">wizards</field>
+        <field name="res_model">wizards.sales</field>
+        <field name="view_mode">form</field>
+            <field name="target">new</field>
+    </record>
+
+        <record id="wizard_form_view_wiz" model="ir.ui.view">
+            <field name="name">wizard.form.view.wiz</field>
+            <field name="model">wizards.sales</field>
+            <field name="arch" type="xml">
+                <form>
+
+                            <field name="order_line_ids">
+                                    <tree delete="1"  editable="bottom">
+                                        <field name="product"/>
+                                        <field name="description"/>
+                                        <field name="quantity"/>
+<!--                                        <field name="unit_price"/>-->
+<!--                                        <field name="tax" widget="many2many_tags"/>-->
+<!--                                        <field name="subtotal"/>-->
+<!--                                        <field name="line_id"/>-->
+<!---->
+                                    </tree>
+
+                            </field>
+<!--                                            <div style="margin: 0px; padding: 0px;">-->
+<!--                            <table width="100%" style="color: #454748; font-size: 12px; border-spacing: 0px 4px;"-->
+<!--                                   align="right">-->
+<!--                                <tr>-->
+<!--                                    <td style="width: 60%"/>-->
+<!--                                    <td style="width: 30%; border-top: 1px solid #dee2e6;" align="right">-->
+<!--                                        <span style="font-weight:bold;">Total : </span><field name="Total"/>-->
+<!--                                    </td>-->
+<!--                                </tr>-->
+<!--                            </table>-->
+<!--                        </div>-->
+
+
+                            <footer>
+                            <button name="action_test14" string="Back" type="object" class="oe_highlight" />
+                              </footer>
+
+
+                </form>
+            </field>
+        </record>
+
+
+
+
+</odoo>

@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="weblearns-layout">
+        <t t-call="web.html_container">
+            <div class="header" style="margin-top:-10px;">
+                <img src='/digitz@document/static/src/img/header.jpeg' style="max-width: 100%; height: auto;margin-right:2px;"/>
+            </div>
+            <div class="article o_report_layout_standard">
+                <t t-out="0"/>
+            </div>
+
+            <div class="footer o_standard_footer" style="margin-left:-20px;margin-right:-10px;margin-top:40px;">
+                        <div class="pages" style="padding-bottom:30px;"> <center>
+Page:
+
+<span class="page"/>/<span class="topage"/>
+
+</center>
+                            </div>
+               <div class="row" style="margin-top:-35px;" >
+
+                    <img src='/digitz@document/static/src/img/WhatsApp Image 2024-03-15 at 3.32.14 PM.jpeg' style="max-width: 100%; height: auto;"/>
+                    <br/>
+
+
+                </div>
+            </div>
+
+        </t>
+    </template>
+
+    <template id="report_digitz">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                  <t t-call="digitz@document.weblearns-layout">
+
+                    <div class="page">
+<!--                        <style>-->
+<!--                            tr{-->
+<!--                            font-size:18px;-->
+<!--                            }-->
+<!--                        </style>-->
+<!--                        <table class="table table-sm o_main_table border border-collapse"-->
+<!--                               style="border: 2px solid black;" name="order_line">-->
+<!--                            <tr style="color:blue; font-size:20px;">-->
+<!--                                <td>-->
+<!--                                    <strong>name :</strong>-->
+<!--                                </td>-->
+<!--                                <td style="padding-right:200px;">-->
+<!--                                    <t t-esc="doc.name_id.name"/>-->
+<!--                                </td>-->
+
+<!--                                <td>-->
+<!--                                    <strong>Date:</strong>-->
+<!--                                </td>-->
+<!--                                <td><t t-esc="doc.name_id.name"/></td>-->
+<!--                            </tr>-->
+<!--                            <tr style="color:blue;">-->
+<!--                                <td>-->
+<!--                                    <strong>email :</strong>-->
+<!--                                </td>-->
+<!--                                <td style="padding-right:10px;">-->
+<!--                                    <span t-field="doc.email"/>-->
+<!--                                </td>-->
+
+<!--                                <td>-->
+<!--                                    <strong>Source:</strong>-->
+<!--                                </td>-->
+<!--                                <td>-->
+<!--                                    <t t-esc="doc.source_id.name"/>-->
+<!--                                </td>-->
+<!--                            </tr>-->
+<!--                        </table>-->
+                        <style>
+    .custom-table {
+        font-size: 18px;
+    }
+
+    .custom-table tr {
+        font-size: 18px;
+    }
+
+    .custom-table td {
+        padding-right: 20px;
+    }
+</style>
+
+<table class="table table-sm o_main_table border border-collapse custom-table" style="border: 2px solid black;" name="order_line">
+    <tr style="color: blue;">
+        <td><strong>name :</strong></td>
+        <td><strong><t t-esc="doc.name_id.name"/></strong></td>
+
+        <td><strong>Date:</strong></td>
+        <td><strong><t t-esc="doc.date"/></strong></td>
+    </tr>
+    <tr style="color: blue;">
+        <td><strong>email :</strong></td>
+        <td><strong><span t-field="doc.email"/></strong></td>
+
+        <td><strong>Source:</strong></td>
+        <td><strong><t t-esc="doc.source_id.name"/></strong></td>
+    </tr>
+</table>
+
+                        <br/>
+                            <t t-if="doc.attachment_ids">
+                            <table class="table table-sm o_main_table border border-collapse"
+                                   style="border: 1px solid black;" name="order_line">
+                                <thead>
+                                    <tr style="background-color:#ab0a3a; color:white;">
+                                        <th name="product_vartientS" class="text-left" colspan="7" style="text-align:left;">
+                                            Attached files:
+                                        </th>
+
+
+                                    </tr>
+
+                                </thead>
+
+
+                                    <tr border="1" style="border: 1px solid black; color:blue;" >
+                                        <td colspan="6" style="padding-bottom:200px;">
+
+<!--                                            <t t-esc="doc.attachment_ids.id"/>-->
+       <t t-foreach="doc.attachment_ids" t-as="attachment">
+            <p>
+                <img t-if="attachment.mimetype.startswith('image')" t-att-src="'/web/image/' + str(attachment.id)" style="max-width: 80%; max-height: 90%;"/>
+<!--                <a t-if="not attachment.mimetype.startswith('image')" t-att-href="'/web/content/' + str(attachment.id) + '?download=true'">-->
+<!--                    <t t-esc="attachment.name"/>-->
+<!--                </a>-->
+          <img t-if="attachment.mimetype == 'image/png'" t-att-src="'/web/content/' + str(attachment.id) + '?download=true'"/>
+                <a t-if="attachment.mimetype == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'" t-att-href="'/web/content/' + str(attachment.id) + '?download=true'">
+                    <t t-esc="attachment.name"/>
+                </a>
+
+
+            </p>
+        </t>
+
+                                        </td>
+                                    </tr>
+                            </table>
+                            </t>
+
+
+                <br/>
+                       <t t-if="doc.command">
+
+                 <table class="table table-sm o_main_table border border-collapse"
+                                   style="border: 1px solid black;" name="order_line">
+                                <thead>
+                                    <tr style="background-color:#ab0a3a; color:white;">
+                                        <th name="product_vartientS" class="text-left" colspan="7" style="text-align:left;">
+                                            Commands:
+                                        </th>
+
+
+                                    </tr>
+
+                                </thead>
+
+
+                                    <tr border="1" style="border: 1px solid black; color:blue;" >
+                                        <td colspan="6" style="padding-bottom:200px;">
+                                            <t t-esc="doc.command"/>
+                                        </td>
+                                    </tr>
+                            </table>
+                        </t>
+            <br/>
+
+
+
+<!--                    <div class="row">-->
+
+<!--                            <strong>-->
+<!--                                <span>Orderlines</span>-->
+<!--                            </strong>-->
+<!--                            <style>-->
+
+<!--                                td{-->
+<!--                                border: 1px solid #ab0a3a ;-->
+<!--                                }-->
+<!--                                th-->
+<!--                                {-->
+<!--                                border:1px solid #ab0a3a;-->
+<!--                                }-->
+
+<!--                            </style>-->
+<!--                    </div>-->
+
+<!--                        <div>-->
+
+<!--                            <table class="table table-sm o_main_table border border-collapse"-->
+<!--                                   style="border: 1px solid black;" name="order_line">-->
+
+<!--                                    <tr style="background-color:#ab0a3a; color:white;">-->
+<!--                                        <th name="product_vartientS" class="text-left">-->
+<!--                                            <span>Product</span>-->
+<!--                                        </th>-->
+
+<!--                                        <th name="product_vartient" class="text-left">-->
+<!--                                            <span>Description</span>-->
+<!--                                        </th>-->
+
+<!--                                        <th name="product_Product" class="text-left">-->
+<!--                                            <span>Quantity</span>-->
+<!--                                        </th>-->
+
+<!--                                         <th name="product_price" class="text-left">-->
+<!--                                            <span>Unity price</span>-->
+<!--                                        </th>-->
+
+
+<!--                                        &lt;!&ndash;                                <th name="product_Taxes" class="text-left">&ndash;&gt;-->
+<!--                                        &lt;!&ndash;                                    <span>Taxes</span>&ndash;&gt;-->
+<!--                                        &lt;!&ndash;                                </th>&ndash;&gt;-->
+
+<!--                                        <th name="product_Subtotal" class="text-left">-->
+<!--                                            <span>Subtotal</span>-->
+<!--                                        </th>-->
+
+<!--                                    </tr>-->
+
+
+<!--                                <t t-set="total" t-value="0"/>-->
+<!--                                <t t-set="count" t-value="0"/>-->
+<!--                                <t t-foreach="doc.Customer_ids" t-as="line">-->
+<!--                                    <t t-set="total" t-value="total+line.subtotal"/>-->
+<!--&lt;!&ndash;                                    <t t-set="count" t-value="count+1"/>&ndash;&gt;-->
+<!--                                    <tr border="1" style="border: 1px solid black; color:blue;">-->
+<!--                                        <td>-->
+<!--                                            <span t-field="line.product_id.name"/>-->
+<!--                                        </td>-->
+
+<!--                                        <td>-->
+<!--                                            <span t-field="line.description"/>-->
+<!--                                        </td>-->
+
+
+
+
+<!--                                        <td>-->
+<!--                                            <span t-field="line.quantity"/>-->
+<!--                                        </td>-->
+
+<!--y-->
+
+
+<!--&lt;!&ndash;                                        &lt;!&ndash;                                <td>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                                        &lt;!&ndash;                                    <span t-field="line.tax_id.id"/>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                                        &lt;!&ndash;                                </td>&ndash;&gt;&ndash;&gt;-->
+
+<!--                                        <td>-->
+<!--                                            <span t-field="line.subtotal"/>-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+<!--                                </t>-->
+<!--                                <tr style="color:blue;">-->
+<!--                                    <td colspan="3">-->
+
+<!--                                    </td>-->
+<!--                                    <td>-->
+<!--                                        <strong>Total</strong>-->
+<!--                                    </td>-->
+
+<!--                                    <td>-->
+<!--                                        <t t-esc="total"/>-->
+<!--                                    </td>-->
+
+<!--                                </tr>-->
+<!--&lt;!&ndash;                                <tr style="color:blue;">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <td colspan="7">Amount in words:&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <t t-esc="doc.currency_id.amount_to_text(doc.amount_total)"/>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;                                    </td>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;                                </tr>&ndash;&gt;-->
+
+<!--                            </table>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                      <div class="row">
+    <strong>
+        <span>Orderlines</span>
+    </strong>
+</div>
+
+<style>
+    .table {A
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        border: 1px solid #ab0a3a;
+        text-align: left;
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    th {
+        background-color: #ab0a3a;
+        color: white;
+    }
+</style>
+
+<div>
+    <table class="table table-sm o_main_table">
+        <tr>
+            <th>Product</th>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Unity price</th>
+            <th>Subtotal</th>
+        </tr>
+
+        <t t-set="total" t-value="0"/>
+        <t t-set="count" t-value="0"/>
+        <t t-foreach="doc.Customer_ids" t-as="line">
+            <t t-set="total" t-value="total+line.subtotal"/>
+            <tr style="color: blue;">
+                <td><span t-field="line.product_id.name"/></td>
+                <td><span t-field="line.description"/></td>
+                <td><span t-field="line.quantity"/></td>
+                <td><span t-field="line.unit_price"/></td>
+                <td><span t-field="line.subtotal"/></td>
+            </tr>
+        </t>
+        <tr style="color: blue;">
+            <td colspan="3"></td>
+            <td><strong>Total</strong></td>
+            <td><t t-esc="doc.currency_id.symbol"/><t t-esc="total"/></td>
+        </tr>
+    </table>
+</div>
+                    </div>
+                  </t>
+            </t>
+        </t>
+
+
+    </template>
+
+</odoo>

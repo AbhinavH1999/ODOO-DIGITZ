@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="crm_wizard" model="ir.actions.act_window">
+        <field name="name">Crm</field>
+        <field name="res_model">crm.wizards</field>
+        <field name="view_mode">form</field>
+            <field name="target">new</field>
+    </record>
+
+        <record id="crm_form_view_wiz" model="ir.ui.view">
+            <field name="name">crm.form.view.wiz</field>
+            <field name="model">crm.wizards</field>
+            <field name="arch" type="xml">
+                <form>
+                        <sheet>
+
+                                <group>
+                                        <field name="partner_id"/>
+                                        <field name="opportunity"/>
+                                        <field name="email"/>
+                                        <field name="phone"/>
+
+                    </group>
+                    </sheet>
+
+
+
+
+                   <footer>
+                            <button name="action_test8" string="Button" type="object" class="oe_highlight" />
+                              </footer>
+
+
+                </form>
+            </field>
+        </record>
+
+
+
+
+</odoo>

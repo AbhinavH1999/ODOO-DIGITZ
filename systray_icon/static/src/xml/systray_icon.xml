@@ -1,0 +1,367 @@
+<!--<templates>-->
+<!--   <t t-name="IconSystrayDropdown">-->
+<!--       <div class="SystrayMenuContainer">-->
+<!--           <div class="o_MessagingMenu dropdown ">-->
+<!--               <div class="o-dropdown dropdown o_debug_manager o-dropdown-no-caret" >-->
+<!--                   <a class="o_MessagingMenu_toggler dropdown-toggle o-no-caret o-dropdown-narrow" href="#"-->
+<!--                      title="Systray Dropdown" role="button" aria-haspopup="true" aria-expanded="">-->
+<!--                       <i id='create_so' class="fa fa-cloud"/>-->
+<!--                   </a>-->
+<!--               </div>-->
+
+<!--               <div id="systray_notif" class="o_MessagingMenu_dropdownMenu  o-dropdown-menu " >-->
+<!--                   <div class="container" style="padding-top: 1%; margin-left:-15px;">-->
+<!--                       <div class="systray_notification"/>-->
+<!--                   </div>-->
+<!--               </div>-->
+<!--           </div>-->
+<!--       </div>-->
+<!--   </t>-->
+
+<!--   <t t-name="SystrayDetails">-->
+<!--       <div class="container" >-->
+<!--           <button class="top-left" onclick="changeColors(this)">button1</button>-->
+<!--                      <script>-->
+<!--function changeColors(event){-->
+<!--var color = 'yellow';-->
+<!--event.style.backgroundColor=color;-->
+<!--}-->
+<!--</script>-->
+<!--           <button class="top-right"  onclick="changeColor(this)" style="margin-left:150px;">button2</button>-->
+<!--           <script>-->
+<!--function changeColor(event){-->
+<!--var color = 'yellow';-->
+<!--event.style.backgroundColor=color;-->
+<!--}-->
+<!--</script>-->
+
+
+<!--                   <div style="margin-right:100%;">-->
+<!--                       <table class="table table-sm o_main_table border border-collapse"-->
+<!--                              style="border: 1px solid black; width:1px;padding-left:10%;" name="order_line" >-->
+<!--                            <tr style="background-color:#ab0a3a;color:white;">-->
+<!--                                <th style="padding-right:1px;width:8%;">-->
+<!--                                    <strong>number</strong>-->
+<!--                                </th>-->
+
+<!--                                <th>-->
+<!--                                    <strong>customer name</strong>-->
+<!--                                </th>-->
+<!--                                <th>-->
+<!--                                    <strong>salesperson</strong>-->
+<!--                                </th>-->
+<!--                                <th>-->
+<!--                                    <strong>total</strong>-->
+<!--                                </th>-->
+
+<!--                            </tr>-->
+<!--                            <t t-foreach="widget._result" t-as="doc">-->
+<!--                            <tr style="border: 1px ; color:blue;">-->
+<!--                                <td style="padding-right:1px;">-->
+<!--                                <span t-esc="doc.name"/>-->
+<!--                                </td>-->
+<!--                                <td >-->
+<!--                                    <span t-esc="doc.partner_id"/>-->
+<!--                                </td>-->
+<!--                                <td >-->
+<!--                                    <span t-esc="doc.user_id"/>-->
+<!--                                </td>-->
+<!--                                <td >-->
+<!--                                    <span t-esc="doc.amount_total"/>-->
+<!--                                </td>-->
+<!--                            </tr>-->
+
+<!--                            </t>-->
+<!--                        </table>-->
+<!--                       <t t-if="widget._resulte">-->
+<!--                           <span>hiiiiiiiii</span>-->
+
+<!--                       <table class="table table-sm o_main_table border border-collapse"-->
+<!--                               style="border: 1px solid black; width:1px;padding-left:10%;" name="order_line" >-->
+<!--                            <tr style="background-color:#ab0a3a;color:white;">-->
+<!--                                <th style="padding-right:1px;width:8%;">-->
+<!--                                    <strong>number</strong>-->
+<!--                                </th>-->
+
+<!--                                <th>-->
+<!--                                    <strong>customer name</strong>-->
+<!--                                </th>-->
+<!--                                <th>-->
+<!--                                    <strong>salesperson</strong>-->
+<!--                                </th>-->
+<!--                                <th>-->
+<!--                                    <strong>total</strong>-->
+<!--                                </th>-->
+
+<!--                            </tr>-->
+<!--                            <t t-foreach="widget._resulte" t-as="doc">-->
+<!--                            <tr style="border: 1px ; color:blue;">-->
+<!--                                <td style="padding-right:1px;">-->
+<!--                                <span t-esc="doc.name"/>-->
+<!--                                </td>-->
+<!--                                <td >-->
+<!--                                    <span t-esc="doc.partner_id"/>-->
+<!--                                </td>-->
+<!--                                <td >-->
+<!--                                    <span t-esc="doc.user_id"/>-->
+<!--                                </td>-->
+<!--                                <td >-->
+<!--                                    <span t-esc="doc.amount_total"/>-->
+<!--                                </td>-->
+<!--                            </tr>-->
+
+<!--                            </t>-->
+<!--                        </table>-->
+<!--                    </t>-->
+<!--                    <t t-else="widget._results.length > 0">-->
+
+<!--                                 <table class="table table-sm o_main_table border border-collapse"-->
+<!--                               style="border: 1px solid black; width:1px;padding-left:10%;" name="order" >-->
+<!--                            <tr style="background-color:#ab0a3a;color:white;">-->
+
+<!--                                <th style="padding-right:1px;width:8%;">-->
+<!--                                    <strong>refferece</strong>-->
+<!--                                </th>-->
+
+<!--                                <th>-->
+<!--                                    <strong> name</strong>-->
+<!--                                </th>-->
+<!--                                <th>-->
+<!--                                    <strong>age</strong>-->
+<!--                                </th>-->
+<!--                                <th>-->
+<!--                                    <strong>gender</strong>-->
+<!--                                </th>-->
+
+<!--                            </tr>-->
+<!--                            <t t-foreach="widget._results" t-as="doc">-->
+<!--                            <tr style="border: 1px ; color:blue;">-->
+<!--                                <td style="padding-right:1px;">-->
+<!--                                <span t-esc="doc.ref"/>-->
+<!--                                </td>-->
+<!--                                <td >-->
+<!--                                    <span t-esc="doc.name"/>-->
+<!--                                </td>-->
+<!--                                <td >-->
+<!--                                    <span t-esc="doc.age"/>-->
+<!--                                </td>-->
+<!--                                <td >-->
+<!--                                    <span t-esc="doc.gender"/>-->
+<!--                                </td>-->
+<!--                            </tr>-->
+
+<!--                            </t>-->
+<!--                        </table>-->
+<!--                    </t>-->
+
+<!--                    </div>-->
+<!--       </div>-->
+
+<!--   </t>-->
+<!--</templates>-->
+
+
+
+
+
+
+<templates>
+    <t t-name="IconSystrayDropdown">
+        <div class="SystrayMenuContainer">
+            <div class="o_MessagingMenu dropdown ">
+                <div class="o-dropdown dropdown o_debug_manager o-dropdown--no-caret">
+                    <a class="o_MessagingMenu_toggler dropdown-toggle o-no-caret o-dropdown--narrow" href="#"
+                       title="Systray Dropdown" role="button" aria-haspopup="true" aria-expanded="">
+                        <i id='create_so' class="fa fa-cloud"/>
+                    </a>
+                </div>
+
+                <div id="systray_notif" class="o_MessagingMenu_dropdownMenu  o-dropdown-menu ">
+                    <div class="container" style="padding-top: 1%; margin-left:-15px;">
+                        <div class="systray_notification"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+<!--<templates>-->
+<!--    <t t-name="IconSystrayDropdown">-->
+<!--        <div class="SystrayMenuContainer">-->
+<!--            <div class="o_MessagingMenu dropdown">-->
+<!--                <div class="o-dropdown dropdown o_debug_manager o-dropdown-no-caret">-->
+<!--                    <a class="o_MessagingMenu_toggler dropdown-toggle o-no-caret o-dropdown-narrow" href="#"-->
+<!--                       title="Systray Dropdown" role="button" aria-haspopup="true" aria-expanded="false">-->
+<!--                        <i id='create_so' class="fa fa-cloud"/>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--                <div id="systray_notif" class="o_MessagingMenu_dropdownMenu o-dropdown-menu "-->
+<!--                     style="margin-left:-260px; padding-right:10px; width:300px;">-->
+<!--                    <div class="container" style="padding-top: 4%; position:bottom-end;">-->
+<!--                        <div class="systray_notification"/>-->
+
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </t>-->
+
+
+    <t t-name="SystrayDetails">
+
+        <div class="container" style="width:100%; ">
+<div style="padding-right:100px; padding-top:-10px; margin-top:-10px; margin-bottom:-25px; margin-left:-20px;">
+    <button class="display" id="btn">Button-1</button>
+</div>
+
+            <div style="padding-left:100px; padding-bottom:20px; margin-right:100px;">
+                <button class="display_devel" >Button-2</button>
+            </div>
+
+            <div style="margin:-20px; text-align:left; padding-right:100%;">
+                        <table class="table table-sm o_main_table border border-collapse"
+                           style="border: 1px solid black; width:1px;padding-left:10%;" name="order">
+
+
+                    <t t-if="value">
+                                         <style>
+                     .display_devel {
+                        background-color: #ff0000; /* Red */
+                        color: #ffffff; /* White text */
+                    }
+
+                </style>
+
+                            <tr style="background-color:#ab0a3a;color:white;">
+
+                                <th style="padding-right:1px;width:8%;">
+                                    <strong>refferece</strong>
+                                </th>
+
+                                <th>
+                                    <strong> name</strong>
+                                </th>
+                                <th>
+                                    <strong>age</strong>
+                                </th>
+                                <th>
+                                    <strong>gender</strong>
+                                </th>
+
+                            </tr>
+
+
+                        <t t-foreach="value" t-as="val">
+
+
+                            <tr style="border: 1px ; color:blue;">
+                                <td style="padding-right:1px;">
+                                <span t-esc="val.ref"/>
+                                </td>
+                                <td >
+                                    <span t-esc="val.name"/>
+                                </td>
+                                <td >
+                                    <span t-esc="val.age"/>
+                                </td>
+                                <td >
+                                    <span t-esc="val.gender"/>
+                                </td>
+                            </tr>
+                        </t>
+                    </t>
+                    <t t-if="Data">
+                                                       <style>
+                        .display {
+                        background-color: #ff0000; /* Red */
+                        color: #ffffff; /* White text */
+                    }
+
+                </style>
+
+                        <thead>
+                <tr style="background-color:#ab0a3a;color:white;">
+                                <th style="padding-right:1px;width:8%;">
+                                    <strong>number</strong>
+                                </th>
+
+                                <th>
+                                    <strong>customer name</strong>
+                                </th>
+                                <th>
+                                    <strong>salesperson</strong>
+                                </th>
+                                <th>
+                                    <strong>total</strong>
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <t t-foreach="Data" t-as="record">
+                  <tr style="border: 1px ; color:blue;">
+                                <td style="padding-right:1px;">
+                                <span t-esc="record.name"/>
+                                </td>
+                                <td >
+                                    <span t-esc="record.partner_id"/>
+                                </td>
+                                <td >
+                                    <span t-esc="record.user_id"/>
+                                </td>
+                                <td >
+                                    <span t-esc="record.amount_total"/>
+                                </td>
+                            </tr>
+                        </t>
+                    </t>
+                            <t t-if="Datas">
+                                                       <style>
+
+                </style>
+
+                        <thead>
+                <tr style="background-color:#ab0a3a;color:white;">
+                                <th style="padding-right:1px;width:8%;">
+                                    <strong>number</strong>
+                                </th>
+
+                                <th>
+                                    <strong>customer name</strong>
+                                </th>
+                                <th>
+                                    <strong>salesperson</strong>
+                                </th>
+                                <th>
+                                    <strong>total</strong>
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <t t-foreach="Datas" t-as="record">
+                  <tr style="border: 1px ; color:blue;">
+                                <td style="padding-right:1px;">
+                                <span t-esc="record.name"/>
+                                </td>
+                                <td >
+                                    <span t-esc="record.partner_id"/>
+                                </td>
+                                <td >
+                                    <span t-esc="record.user_id"/>
+                                </td>
+                                <td >
+                                    <span t-esc="record.amount_total"/>
+                                </td>
+                            </tr>
+                        </t>
+                    </t>
+                </table>
+            </div>
+
+        </div>
+    </t>
+</templates>
+
+
+
+
+
+

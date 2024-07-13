@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<odoo>-->
+<!--    <record models="ir.module.category" id="module_category_hospital">-->
+<!--        <field name="name">Hospital Management</field>-->
+<!--        <field name="description">category for hospital</field>-->
+<!--    </record>-->
+
+<!--    <record id="group_lunch_user" models="res.groups">-->
+<!--        <field name="name">User</field>-->
+<!--        <field name="category_id" ref="module_category_hospital"/>-->
+<!--    </record>-->
+<!--    <record id="group_lunch_manager" models="res.groups">-->
+<!--        <field name="name">Administrator</field>-->
+<!--        <field name="implied_ids" eval="[(4,ref('group_lunch_user'))]"/>-->
+<!--        <field name="category_id" ref="module_category_hospital"/>-->
+
+<!--    </record>-->
+<!--    <record models="ir.rule" id="rule_hide_hospital_menu">-->
+<!--        <field name="name">Hide Hospital Menu for User Group</field>-->
+<!--        <field name="model_id" ref="ir_model_data_model"/>-->
+<!--        <field name="domain_force">[('module', '=', 'om_hospital'), ('name', '=', 'menu_hospital_root')]</field>-->
+<!--        <field name="groups" eval="[(4, ref('group_lunch_user'))]"/>-->
+<!--        <field name="perm_read" eval="True"/>-->
+<!--        <field name="perm_write" eval="False"/>-->
+<!--        <field name="perm_create" eval="False"/>-->
+<!--        <field name="perm_unlink" eval="False"/>-->
+<!--    </record>-->
+<!--&lt;!&ndash;    <record id="school_student_rule" models="ir.rule">&ndash;&gt;-->
+<!--&lt;!&ndash;        <field name="name">Student Records</field>&ndash;&gt;-->
+<!--&lt;!&ndash;        <field name="model_id" ref="model_school_student"/>&ndash;&gt;-->
+<!--&lt;!&ndash;        <field name="domain_force">[('user_id', '=', user.id)]</field>&ndash;&gt;-->
+<!--&lt;!&ndash;        <field name="groups" eval="[(4,      ref('school_management.school_management_student'))]"/>&ndash;&gt;-->
+<!--&lt;!&ndash;        <field name="perm_read" eval="True"/>&ndash;&gt;-->
+<!--&lt;!&ndash;        <field name="perm_write" eval="False"/>&ndash;&gt;-->
+<!--&lt;!&ndash;        <field name="perm_create" eval="False"/>&ndash;&gt;-->
+<!--&lt;!&ndash;        <field name="perm_unlink" eval="False"/>&ndash;&gt;-->
+<!--&lt;!&ndash;    </record>&ndash;&gt;-->
+
+
+<!--</odoo>-->
+
+
+<!--<odoo>-->
+<!--    &lt;!&ndash; Define the module category &ndash;&gt;-->
+<!--    <record models="ir.module.category" id="module_category_hospital">-->
+<!--        <field name="name">Hospital Management</field>-->
+<!--        <field name="description">Category for hospital</field>-->
+<!--    </record>-->
+
+<!--    &lt;!&ndash; Define the User group &ndash;&gt;-->
+<!--    <record id="group_lunch_user" models="res.groups">-->
+<!--        <field name="name">User</field>-->
+<!--        <field name="category_id" ref="module_category_hospital"/>-->
+<!--    </record>-->
+
+<!--    &lt;!&ndash; Define the Administrator group &ndash;&gt;-->
+<!--    <record id="group_lunch_manager" models="res.groups">-->
+<!--        <field name="name">Administrator</field>-->
+<!--        <field name="implied_ids" eval="[(4, ref('group_lunch_user'))]"/>-->
+<!--        <field name="category_id" ref="module_category_hospital"/>-->
+<!--    </record>-->
+
+<!--&lt;!&ndash;    &lt;!&ndash; Define the access control rule to hide the menu item for the User group &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    <record models="ir.rule" id="rule_hide_hospital_menu">&ndash;&gt;-->
+<!--&lt;!&ndash;        <field name="name">Hide Hospital Menu for User Group</field>&ndash;&gt;-->
+<!--&lt;!&ndash;        &lt;!&ndash; Replace 'ir_model_data_model' with the actual models reference &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        <field name="model_id" ref="ir.models.data_model"/>&ndash;&gt;-->
+<!--&lt;!&ndash;        <field name="domain_force">[('module', '=', 'om_hospital'), ('id', '=', 'menu_hospital_root')]</field>&ndash;&gt;-->
+<!--&lt;!&ndash;        <field name="groups" eval="[(4, ref('group_lunch_user'))]"/>&ndash;&gt;-->
+<!--&lt;!&ndash;        <field name="perm_read" eval="True"/>&ndash;&gt;-->
+<!--&lt;!&ndash;        <field name="perm_write" eval="False"/>&ndash;&gt;-->
+<!--&lt;!&ndash;        <field name="perm_create" eval="False"/>&ndash;&gt;-->
+<!--&lt;!&ndash;        <field name="perm_unlink" eval="False"/>&ndash;&gt;-->
+<!--&lt;!&ndash;    </record>&ndash;&gt;-->
+<!--        <record models="ir.rule" id="rule_hide_hospital_menu">-->
+<!--        <field name="name">Hide Hospital Menu for User Group</field>-->
+<!--        <field name="model_id" ref="ir.models.data_model"/>-->
+<!--        <field name="domain_force">[('id', '=', 'menu_hospital_root')]</field>-->
+<!--        <field name="groups" eval="[(4, ref('group_lunch_user'))]"/>-->
+<!--        <field name="perm_read" eval="True"/>-->
+<!--        <field name="perm_write" eval="False"/>-->
+<!--        <field name="perm_create" eval="False"/>-->
+<!--        <field name="perm_unlink" eval="False"/>-->
+<!--    </record>-->
+<!--</odoo>-->
+
+<odoo>
+    <record model="ir.module.category" id="module_category_hospital">
+        <field name="name">Hospital Management</field>
+        <field name="description">Category for hospital</field>
+    </record>
+
+    <record id="group_lunch_user" model="res.groups">
+        <field name="name">User</field>
+        <field name="category_id" ref="module_category_hospital"/>
+    </record>
+
+    <record id="group_lunch_manager" model="res.groups">
+        <field name="name">Administrator</field>
+        <field name="implied_ids" eval="[(4,ref('group_lunch_user'))]"/>
+        <field name="category_id" ref="module_category_hospital"/>
+    </record>
+
+<!--    <record models="ir.rule" id="rule_hide_hospital_menu">-->
+<!--        <field name="name">Hide Hospital Menu for User Group</field>-->
+<!--        <field name="model_id" ref="module_category_hospital"/> &lt;!&ndash; Corrected models reference &ndash;&gt;-->
+<!--        <field name="domain_force">[('id', '=', 'menu_hospital_root')]</field> &lt;!&ndash; Corrected field name &ndash;&gt;-->
+<!--        <field name="groups" eval="[(4, ref('group_lunch_user'))]"/>-->
+<!--        <field name="perm_read" eval="True"/>-->
+<!--        <field name="perm_write" eval="False"/>-->
+<!--        <field name="perm_create" eval="False"/>-->
+<!--        <field name="perm_unlink" eval="False"/>-->
+<!--    </record>-->
+<!--     <record id="hide_hospital_rule" models="ir.rule">-->
+<!--        <field name="name">Hide Hospital Menu</field>-->
+<!--        <field name="model_id" ref="module_category_hospital"/>-->
+<!--        <field name="domain_force">[('id','=','menu_hospital_root')]</field>-->
+<!--         <field name="groups" eval="[(4, ref('group_lunch_user'))]"/>-->
+<!--         <field name="perm_read" eval="True"/>-->
+<!--        <field name="perm_write" eval="False"/>-->
+<!--        <field name="perm_create" eval="False"/>-->
+<!--        <field name="perm_unlink" eval="False"/>-->
+<!--    </record>-->
+<!--    <record id="hide_hospital_menu_rule" models="ir.rule">-->
+<!--    <field name="name">Hide Hospital Menu for Users</field>-->
+<!--    <field name="model_id" ref="model_om_hospitel"/>-->
+<!--    <field name="domain_force">[('parent_id', '=', False), ('name', '=', 'Hospital')]</field>-->
+<!--    <field name="groups" eval="[(4, ref('group_lunch_user'))]"/>-->
+<!--    <field name="perm_read" eval="True"/>-->
+<!--    <field name="perm_write" eval="False"/>-->
+<!--    <field name="perm_create" eval="False"/>-->
+<!--    <field name="perm_unlink" eval="False"/>-->
+<!--</record>-->
+
+
+</odoo>
+
+
+
+
+
+

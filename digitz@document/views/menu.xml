@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <menuitem id="menu_digitz_root"
+                  name="Digitz"
+                  parent="sale.sale_order_menu"
+                  action="action_digitz_document"
+                  sequence="10"
+                  />
+
+    </odoo>

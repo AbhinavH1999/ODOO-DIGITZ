@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_systray_forms" model="ir.ui.view">
+        <field name="name">systray.forms.form</field>
+        <field name="model">systray.forms</field>
+        <field name="arch" type="xml">
+
+            <form>
+                <header>
+                    <field name="state" widget="statusbar" nolabel="1" options="{'clickable': '1'}"
+                           statusbar_visible="draft,checked,validated,rejected" attrs="{'readonly': [('group_id', '!=', ('group_lunch_systray_manager'))]}"/>
+
+
+                    <button name="draft" string="Draft" type="object"
+                            attrs="{'invisible': [('state', '!=','checked'),('state', '!=','validated'),('state', '!=','rejected')]}" groups="systray_form.group_lunch_systray_manager"/>
+                    <button name="checked" string="checked" type="object"
+                            attrs="{'invisible': [('state', '!=','draft')]}" groups="systray_form.group_lunch_systray_manager"/>
+                    <button name="validated" string="validated" type="object"
+                            attrs="{'invisible': [('state', '!=','checked')]}" groups="systray_form.group_lunch_systray_manager" />
+                    <button name="rejected" string="rejected" type="object"
+                            attrs="{'invisible': [('state', '!=','checked')]}" groups="systray_form.group_lunch_systray_manager" />
+
+                </header>
+                <sheet>
+                    <div>
+                        <h2>
+                            <field name="priority" widget="priority" class="mr-2"/>
+                        </h2>
+                    </div>
+
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="group_id" invisible="1"/>
+                            <field name="images"/>
+                            <field name="check" invisible="1"/>
+<!--                            <field name="user_name"/>-->
+                             <field name="create_uid" groups="systray_form.group_lunch_systray_manager" readonly="1"/>
+
+
+
+                        </group>
+
+                        <group>
+                            <button name="my_python_function" string="Button" type="object" class="oe_highlight"    attrs="{'invisible': [('check', '=', True)]}"/>
+                        </group>
+                    </group>
+
+                </sheet>
+ <sheet>
+               <field name="images" widget='image' class="oe_avatar" />
+
+     </sheet>
+                                 <style>
+
+.oe_avatar{
+    width: 100%;
+    height: 100%;
+}
+
+            </style>
+            </form>
+        </field>
+    </record>
+    <record id="view_systray_forms_tree" model="ir.ui.view">
+        <field name="name">systray.forms.tree</field>
+        <field name="model">systray.forms</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="images"/>
+                <field name="priority" widget="priority" class="mr-2" />
+                <field name="create_uid" groups="systray_form.group_lunch_systray_manager"/>
+                                <field name="state"
+                       decoration-success="state =='validated'"
+                       decoration-info="state =='draft'"
+                       decoration-warning="state =='checked'"
+                       decoration-danger="state =='rejected'"
+                       widget="badge"/>
+
+
+            </tree>
+        </field>
+    </record>
+    <record id="action_systray_forms" model="ir.actions.act_window">
+        <field name="name">systray</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">systray.forms</field>
+    </record>
+
+
+</odoo>

@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+om_hospitel.access_hospital_patient,access_hospital_patient,om_hospitel.model_hospital_patient,base.group_user,1,1,1,1
+om_hospitel.access_hospital_doctors,access_hospital_doctors,om_hospitel.model_hospital_doctors,base.group_user,1,1,1,1

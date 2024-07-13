@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<templates>-->
+<!--    <t t-name="systray_forms" owl="1">-->
+<!--        <div class="SystrayMenuContainer">-->
+<!--            <div class="o_MessagingMenu dropdown">-->
+<!--                <div class="o-dropdown dropdown o_debug_manager o-dropdown&#45;&#45;no-caret">-->
+<!--                    <a class="o_MessagingMenu_toggler dropdown-toggle o-no-caret o-dropdown&#45;&#45;narrow"-->
+<!--                       href="#" title="Systray Dropdown" role="button" aria-haspopup="true" aria-expanded=""-->
+<!--                       t-on-click="_onClick">-->
+
+<!--                        <i id="create_order"-->
+<!--                           class="fa fa-cloud"-->
+<!--                           style="color: white; margin-bottom:1px; padding:1px;"-->
+<!--                           role="img" aria-label="Sale/Purchase Order"/>-->
+<!--                        <span class="badge"  t-att-class="{ 'd-none': !state.showBadge }" style="margin-bottom:7px;" >-->
+<!--                            &lt;!&ndash; Green dot (or any suitable icon) &ndash;&gt;-->
+<!--                            <i class="fa fa-circle" style="color:#32CD32; padding-bottom:1px; margin-left:-3px"></i>-->
+
+<!--                        </span>-->
+
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </t>-->
+<!--</templates>-->
+
+<templates>
+    <t t-name="systray_forms.SystrayIcon" owl="1">
+        <div class="SystrayMenuContainer">
+            <div class="o_MessagingMenu dropdown">
+                <div class="o-dropdown dropdown o_debug_manager o-dropdown--no-caret">
+                    <a class="o_MessagingMenu_toggler dropdown-toggle o-no-caret o-dropdown--narrow"
+                       href="#" title="Systray Dropdown" role="button" aria-haspopup="true" aria-expanded=""
+                       t-on-click="_onClick">
+
+                        <i id="create_order"
+                           class="fa fa-cloud"
+                           style="color: white; margin-bottom:1px; padding:1px;"
+                           role="img" aria-label="Sale/Purchase Order"/>
+                        <span class="badge" t-att-class="{ 'd-none': !state.showBadge }" style="margin-bottom:7px;">
+                            <i class="fa fa-circle" style="color:#32CD32; padding-bottom:1px; margin-left:-3px"></i>
+                        </span>
+
+                    </a>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>
+
+
+
+

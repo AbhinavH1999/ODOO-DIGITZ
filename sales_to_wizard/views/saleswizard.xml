@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_order_form_inherit" model="ir.ui.view">
+            <field name="name">sales.order.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='partner_id']" position="before">
+                    <field name="bio"/>
+
+                </xpath>
+                      <xpath expr="//field[@name='payment_term_id']" position="after">
+                   <button name="action_test16" string="to wizard" type="object" class="oe_highlight" />
+                     </xpath>
+            </field>
+        </record>
+    </data>
+
+</odoo>

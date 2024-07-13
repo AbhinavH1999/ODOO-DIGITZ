@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_hospital_patient_form" model="ir.ui.view">
+        <field name="name">hospital.patient.form</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+
+            <form string="allocation_form">
+                <header>
+                    <field name="state" widget="statusbar" nolabel="1" options="{'clickable': '1'}" statusbar_visible="new,processing,Completed" />
+                    <button name="new_" string="New" type="object" attrs="{'invisible': [('state','!=','Completed')]}" />
+                    <button name="processing" string="Processing" type="object" attrs="{'invisible': [('state','!=','new')]}"/>
+                    <button name="Completed" string="Completed" type="object" attrs="{'invisible': [('state', '!=','processing')]}"/>
+
+
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="ref" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+
+                        <field name="name" attrs="{'readonly': [('state', '=', 'Completed')]}"/>
+                        <field name="is_child" attrs="{'readonly': [('state', '=', 'Completed')]}" />
+                            <field name="age" attrs="{'readonly': [('state', '=', 'Completed')]}"/>
+                        <field name="gender" attrs="{'readonly': [('state', '=', 'Completed')]}"/>
+
+                        </group>
+                        <group>
+                            <field name="doctors_id" attrs="{'readonly': [('state', '=', 'Completed')]}"/>
+
+                            <button name="action_test1" string="Button" type="object" class="oe_highlight"/>
+                        </group>
+                        <group>
+
+                        <field name="capitalized_name" attrs="{'readonly': [('state', '=', 'Completed')]}"/>
+                        <field name="product_id" attrs="{'readonly': [('state', '=', 'Completed')]}"/>
+                        <field name="price_unit" attrs="{'readonly': [('state', '=', 'Completed')]}"/>
+                        <field name="qty" attrs="{'readonly': [('state', '=', 'Completed')]}"/>
+                            <field name="tag_ids" widget="many2many_tags"/>
+                            </group>
+
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="view_hospital_patient_tree" model="ir.ui.view">
+        <field name="name">hospital.patient.tree</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <tree decoration-success="state =='Completed'"  decoration-warning="state =='processing'">
+                <field name="ref"/>
+                <field name="name"/>
+                <field name="age"/>
+                <field name="gender"/>
+                <field name="state"
+                       decoration-success="state =='Completed'"
+                       decoration-info="state =='new'"
+                       decoration-warning="state =='processing'"
+                       widget="badge"/>
+            </tree>
+        </field>
+    </record>
+    <record id="school_student_view_search" model="ir.ui.view">
+   <field name="name">hospital.patient.view.search.module.name</field>
+   <field name="model">hospital.patient</field>
+   <field name="arch" type="xml">
+       <search>
+                <field name="ref"/>
+                <field name="name"/>
+                <field name="age"/>
+                <field name="is_child" />
+                <field name="gender"/>
+            <filter string="Is child" name="gender" domain="[('is_child', '=', True)]"/>
+           <group expand="0" string="Group By">
+               <filter string="reference" name="ref" context="{'group_by': 'ref'}"/>
+               <filter string="age" name="age" context="{'group_by': 'age'}"/>
+               <filter string="Gender" name="gender" context="{'group_by': 'gender'}"/>
+           </group>
+       </search>
+   </field>
+</record>
+
+
+    <record id="action_hospital_patient" model="ir.actions.act_window">
+        <field name="name">Patients</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.patient</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

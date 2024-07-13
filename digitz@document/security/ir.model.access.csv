@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+digitz@document.access_digitz_document,access_digitz_document,digitz@document.model_digitz_document,base.group_user,1,1,1,1
+digitz@document.access_digitz_seconds,access_digitz_seconds,digitz@document.model_digitz_seconds,base.group_user,1,1,1,1

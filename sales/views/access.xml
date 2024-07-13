@@ -1,0 +1,29 @@
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<odoo>-->
+<!--        <data>-->
+<!--           <record id="group_all_documents_only_inherited" models="ir.ui.view">-->
+<!--            <field name="name">crm_lead_view_form.inherit.sales</field>-->
+<!--            <field name="models">crm.lead</field>-->
+<!--            <field name="inherit_id" ref="crm.crm_lead_view_form"/>-->
+<!--&lt;!&ndash;            <field name="groups_id" eval="[(4, ref('sales_team.group_sale_salesman_all_leads'))]"/>&ndash;&gt;-->
+<!--            <field name="arch" type="xml">-->
+<!--&lt;!&ndash;                <xpath expr="//form[hasclass('lead_opportunity_form')]" position="attributes">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <attributes name="readonly">&ndash;&gt;-->
+<!--&lt;!&ndash;                      {('base.user_group','=','sales_team.group_sale_salesman_all_leads')}&ndash;&gt;-->
+
+<!--&lt;!&ndash;                    </attributes>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;                </xpath>&ndash;&gt;-->
+<!--                              <xpath expr="//field[@name='expected_revenue']" position="before">-->
+<!--                    <field name="bio"/>-->
+
+<!--                </xpath>-->
+<!--            </field>-->
+<!--        </record>-->
+
+<!--    </data>-->
+<!--</odoo>-->
+
+
+
