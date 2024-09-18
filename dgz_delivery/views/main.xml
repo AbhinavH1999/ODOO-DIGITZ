@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="sale_order_form_delivery" model="ir.ui.view">
+        <field name="name">sale order delivery form</field>
+        <field name="model">sale.order.delivery</field>
+        <field name="arch" type="xml">
+            <form create="false" delete="false">
+                <header>
+                    <button name="delivery_draft" class="btn-primary" string="Set to Draft" type="object"
+                            attrs="{ 'invisible' : [ ('state','!=','cancel') ] }"/>
+                    <button name="delivery_done" class="btn-primary" string="Done" type="object"
+                            attrs="{ 'invisible' : [('state','!=','ready')]}"/>
+                    <button name="delivery_ready" class="btn-primary" string="Set to Ready" type="object"
+                            attrs="{ 'invisible' : [('state','!=','draft')]}"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,ready,done"/>
+                    <button name="delivery_cancel" string="Cancel" type="object"
+                            attrs="{ 'invisible' : ['|', ('state','=','draft') ,('state','=','cancel')] }"/>
+                </header>
+                <sheet>
+                    <div name="button_box" position="inside">
+                        <button class="oe_stat_button" type="object" name="redirect_sale"
+                                icon="fa-shopping-cart" string="Sale Order">
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="partner_id" widget="res_partner_many2one"
+                                   context="{'res_partner_search_mode': 'customer', 'show_address': 1, 'show_vat': True}"
+                                   options="{&quot;always_reload&quot;: True}"
+                                   attrs="{'readonly': ['|',('state', '=', 'done'),('state', '=', 'cancel')]}"/>
+                            <field name="delivery_agent_id"
+                                   attrs="{'readonly': ['|',('state', '=', 'done'),('state', '=', 'cancel')]}"
+                                   required="1"/>
+                        </group>
+                        <group>
+                            <field name="scheduled_date"
+                                   attrs="{'readonly': ['|',('state', '=', 'done'),('state', '=', 'cancel')]}"/>
+                            <field name="source_id" readonly="1" invisible="0"
+                                   attrs="{'readonly': ['|',('state', '=', 'done'),('state', '=', 'cancel')]}"/>
+                            <field name="heading" required="1"
+                                   attrs="{'readonly': ['|',('state', '=', 'done'),('state', '=', 'cancel')]}"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="Delivery Items" string="Delivery Items">
+                            <field name="commercial_line_ids" decoration-danger="state == 'cancel'"
+                                   widget="one2many_list"
+                                   attrs="{'readonly': ['|',('state', '=', 'done'),('state', '=', 'cancel')]}">
+                                <tree editable="bottom"
+                                      decoration-success="(demand == done) and (parent.state != 'cancel')" create="0">
+                                    <field name="sale_order_line_id" invisible="1"/>
+                                    <field name="hs_code"/>
+                                    <field name="product_code"/>
+                                    <field name="product_id"/>
+                                    <field name="demand"/>
+                                    <field name="done"/>
+                                    <field name="note"/>
+                                    <field name="tax_ids" optional="hide" widget="many2many_tags"
+                                           domain="[('type_tax_use','=','sale')]"/>
+                                    <field name="price_unit" optional="show"/>
+                                    <field name="currency_id" invisible="1"/>
+                                    <field name="price_subtotal"/>
+                                </tree>
+                            </field>
+                            <group class="oe_subtotal_footer oe_right">
+
+                                <field name="currency_id" invisible="1"/>
+                                <field name="amount_untaxed" widget="monetary"
+                                       attrs="{'invisible': [('amount_tax', '=', 0)]}"/>
+                                <field name="amount_tax" widget="monetary"
+                                       attrs="{'invisible': [('amount_tax', '=', 0)]}"/>
+                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                    <label for="total"/>
+                                </div>
+                                <field name="total" nolabel="1" widget="monetary" class="oe_subtotal_footer_separator"/>
+                            </group>
+                            <div class="clearfix"/>
+                        </page>
+
+                        <page name="Shipment Terms" string="Shipment Terms">
+                            <field name="shipment_line_ids" decoration-danger="state == 'cancel'" widget="one2many_list"
+                                   attrs="{'readonly': ['|',('state', '=', 'done'),('state', '=', 'cancel')]}">
+                                <tree editable="bottom" decoration-success="done">
+                                    <field name="product_code"/>
+                                    <field name="product_id"/>
+                                    <field name="shipment_mode"/>
+                                    <field name="aw_bl_no"/>
+                                    <field name="aw_bl_date"/>
+                                    <field name="etd"/>
+                                    <field name="eta"/>
+                                    <field name="delivery_status"/>
+                                    <field name="done"   invisible="true"/>
+                                    <field name="notify" invisible="true"/>
+
+                                </tree>
+                            </field>
+                        </page>
+                                     <page name="create" string="Create">
+                            <field name="created_ids">
+                                <tree editable="bottom" >
+                                    <field name="product_code"/>
+                                    <field name="product_id"/>
+                                    <field name="shipment_mode"/>
+                                    <field name="aw_bl_no"/>
+                                    <field name="aw_bl_date"/>
+                                    <field name="etd"/>
+                                    <field name="eta"/>
+                                    <field name="delivery_status"/>
+
+
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="Delivery Note" string="Delivery Note">
+                            <group>
+                                <field name="received_by"/>
+                                <field name="signatured_by" widget="signature"/>
+                            </group>
+                        </page>
+                        <page name="other_info" string="Other Info">
+                            <group name="Shipping Details" string="Shipping Details">
+                                <group>
+                                    <field name="ship_from"
+                                           attrs="{'readonly': ['|',('state', '=', 'done'),('state', '=', 'cancel')]}"
+                                           required="1"/>
+                                    <field name="ship_to"
+                                           attrs="{'readonly': ['|',('state', '=', 'done'),('state', '=', 'cancel')]}"
+                                           required="1"/>
+                                </group>
+                                <group>
+                                    <field name="ship_marks"
+                                           attrs="{'readonly': ['|',('state', '=', 'done'),('state', '=', 'cancel')]}"
+                                           required="1"/>
+                                    <field name="inco_term_id" string="Incoterms"
+                                           attrs="{'readonly': ['|',('state', '=', 'done'),('state', '=', 'cancel')]}"
+                                    />
+                                    <field name="inco_price" string="Shipping Cost"
+                                           attrs="{'invisible': [('inco_term_id', '=', False)]}"
+                                           required="1"/>
+                                </group>
+                            </group>
+                            <group name="Delivery Details" string="Delivery Details">
+                                <group>
+                                    <field name="bill_customer_address_id" widget="res_partner_many2one"
+                                           context="{'res_partner_search_mode': 'customer', 'show_address': 1, 'show_vat': True}"
+                                           options="{&quot;always_reload&quot;: True}"
+                                           attrs="{'readonly': ['|',('state', '=', 'done'),('state', '=', 'cancel')]}"
+                                           required="1"/>
+                                    <field name="contact_person" widget="res_partner_many2one"
+                                           context="{'res_partner_search_mode': 'customer', 'show_address': 1, 'show_vat': True}"
+                                           options="{&quot;always_reload&quot;: True}"
+                                           attrs="{'readonly': ['|',('state', '=', 'done'),('state', '=', 'cancel')]}"
+                                           required="1"/>
+                                </group>
+                                <group>
+                                    <field name="Ship_customer_address_id" widget="res_partner_many2one"
+                                           context="{'res_partner_search_mode': 'customer', 'show_address': 1, 'show_vat': True}"
+                                           options="{&quot;always_reload&quot;: True}"
+                                           attrs="{'readonly': ['|',('state', '=', 'done'),('state', '=', 'cancel')]}"
+                                           required="1"/>
+                                </group>
+
+                            </group>
+                            <group name="Others" string="Others">
+                                <group>
+                                    <field name="head_line"
+                                           attrs="{'readonly': ['|',('state', '=', 'done'),('state', '=', 'cancel')]}"/>
+                                </group>
+                                <group>
+                                    <field name="seller"
+                                           attrs="{'readonly': ['|',('state', '=', 'done'),('state', '=', 'cancel')]}"
+                                           required="1"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" options="{'open_attachments': False}"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="sale_order_tree_delivery" model="ir.ui.view">
+        <field name="name">sale order delivery tree</field>
+        <field name="model">sale.order.delivery</field>
+        <field name="arch" type="xml">
+            <tree create="false" edit="false" delete="false">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="source_id"/>
+                <field name="delivery_agent_id"/>
+                <field name="state" widget="badge" decoration-success="state == 'done'"
+                       decoration-muted="state == 'draft'" decoration-danger="state == 'cancel'"
+                       decoration-info=" state == 'ready'"/>
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="delivery_sale_order" model="ir.actions.act_window">
+        <field name="name">Delivery</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.order.delivery</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+            id="delivery_menu"
+            name="Delivery"
+            action="delivery_sale_order"
+            web_icon="dgz_delivery,static/description/deivery.png"
+            sequence="11"/>
+
+</odoo>

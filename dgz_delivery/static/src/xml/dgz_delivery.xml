@@ -1,0 +1,67 @@
+<templates xml:space="preserve">
+    <t t-name="systray_icon">
+        <div class="new_icon" style="position: relative;">
+            <div class="icon_div" style="position: relative;">
+                <div class="toggle-icon" role="button" t-on-click="toggleDropdown">
+                    <!-- Notification Bell Icon -->
+                    <i class="fa fa-bell-o fa-1.7x"
+                       style="color: white; margin-bottom:10px; padding:13px;"
+                       role="img" aria-label="Notifications"/>
+
+                    <!-- Notification indicator dot -->
+                    <div class="dot" style="
+                       position: absolute;
+                       top: 7px;
+                       right: 4px;
+                       height: 10px;
+                       width: 10px;
+                       background-color: #28A745;
+                       border-radius: 50%;
+                       display: inline-block;
+                       box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+                       ">
+                    </div>
+                </div>
+
+                <!-- Dropdown content that will be toggled -->
+                <div id="systray_notif" style="
+                    display: none;
+                    position: absolute;
+                    top: 40px;
+                    right: 0;
+                    background-color: white;
+                    min-width: 800px;
+                    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+                    z-index: 1;
+                    border-radius: 8px;
+                    overflow: hidden;
+                    border: 1px solid #ddd;
+                    ">
+
+                    <!-- Table for showing the shipment delivery terms -->
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="border-bottom: 1px solid #eee;">
+                                <th style="padding: 10px; text-align: left;">Product Code</th>
+                                <th style="padding: 10px; text-align: left;">Product Name</th>
+                                <th style="padding: 10px; text-align: left;">Shipment Mode</th>
+                                <th style="padding: 10px; text-align: left;">AW/BL No</th>
+                                <th style="padding: 10px; text-align: left;">AW/BL Date</th>
+                                <th style="padding: 10px; text-align: left;">ETD</th>
+                                <th style="padding: 10px; text-align: left;">ETA</th>
+<!--             <th style="padding: 10px; text-align: left; visibility: hidden;">Delivery Status</th>-->
+<!--                                <th style="padding: 10px; text-align: left; visibility: hidden;">Done</th>-->
+<!--                                <th style="padding: 10px; text-align: left; visibility: hidden;">Notify</th>-->
+<!--                                <th style="padding: 10px; text-align: left; visibility: hidden;">Form ID</th>-->
+<!--                                <th style="padding: 10px; text-align: left; visibility: hidden;">Name</th>-->
+                            </tr>
+                        </thead>
+                        <tbody id="shipment_data_tbody">
+                            <!-- Data will be dynamically inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

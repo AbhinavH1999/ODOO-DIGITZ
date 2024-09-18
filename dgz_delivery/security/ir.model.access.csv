@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+dgz_delivery.access_sale_order_delivery,access_sale_order_delivery,dgz_delivery.model_sale_order_delivery,base.group_user,1,1,1,1
+dgz_delivery.access_commercial_delivery_product,access_commercial_delivery_product,dgz_delivery.model_commercial_delivery_product,base.group_user,1,1,1,1
+dgz_delivery.access_inco_terms,access_inco_terms,dgz_delivery.model_inco_terms,base.group_user,1,1,1,1
+dgz_delivery.access_delivery_status,access_delivery_status,dgz_delivery.model_delivery_status,base.group_user,1,1,1,1
+dgz_delivery.access_shipment_delivery_terms,access_shipment_delivery_terms,dgz_delivery.model_shipment_delivery_terms,base.group_user,1,1,1,1
+dgz_delivery.access_fetch_data,access_fetch_data,dgz_delivery.model_fetch_data,base.group_user,1,1,1,1
+dgz_delivery.access_fetch_data_line,access_fetch_data_line,dgz_delivery.model_fetch_data_line,base.group_user,1,1,1,1
+

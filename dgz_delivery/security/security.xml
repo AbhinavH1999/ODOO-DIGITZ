@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="module_category_delivery" model="ir.module.category">
+        <field name="name">Delivery Access</field>
+        <field name="description">Delivery Access</field>
+    </record>
+
+    <record id="group_delivery_own" model="res.groups">
+        <field name="name">User: Own Documents Only</field>
+        <field name="category_id" ref="module_category_delivery"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+    <record id="group_delivery_leader" model="res.groups">
+        <field name="name">Leader: All Documents</field>
+        <field name="category_id" ref="module_category_delivery"/>
+        <field name="implied_ids" eval="[(4, ref('group_delivery_own'))]"/>
+    </record>
+
+    <record id="group_delivery_admin" model="res.groups">
+        <field name="name">Administrator</field>
+        <field name="category_id" ref="module_category_delivery"/>
+        <field name="implied_ids" eval="[(4, ref('group_delivery_leader'))]"/>
+    </record>
+
+    <!--    #delivery-->
+    <record id="delivery_leader_rule_1" model="ir.rule">
+        <field name="name">See all data delivery</field>
+        <field name="model_id" ref="model_sale_order_delivery"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+        <field name="groups" eval="[(4, ref('dgz_delivery.group_delivery_leader'))]"/>
+    </record>
+    <record id="delivery_leader_rule_2" model="ir.rule">
+        <field name="name">See edit own data delivery</field>
+        <field name="model_id" ref="model_sale_order_delivery"/>
+        <field name="domain_force">['|','|', ('delivery_agent_id', '=', user.id), ('delivery_agent_id', '=', False), ('create_uid', '=', user.id)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+        <field name="groups" eval="[(4, ref('dgz_delivery.group_delivery_leader'))]"/>
+    </record>
+    <record id="delivery_superuser_rule" model="ir.rule">
+        <field name="name">Super Power User delivery</field>
+        <field name="model_id" ref="model_sale_order_delivery"/>
+        <field name="domain_force">[]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+        <field name="groups" eval="[(4, ref('dgz_delivery.group_delivery_admin'))]"/>
+    </record>
+    <record id="delivery_only_own_rule" model="ir.rule">
+        <field name="name">Only Documents delivery</field>
+        <field name="model_id" ref="model_sale_order_delivery"/>
+        <field name="domain_force">['|','|', ('delivery_agent_id', '=', user.id), ('delivery_agent_id', '=', False), ('create_uid', '=', user.id)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+        <field name="groups" eval="[(4, ref('dgz_delivery.group_delivery_own'))]"/>
+    </record>
+
+<!--    #ACCESS RIGHTS-->
+    <record model="ir.model.access" id="own_documents_rights">
+        <field name="name">Delivery Access Rights</field>
+        <field name="model_id" ref="model_sale_order_delivery"/>
+        <field name="group_id" ref="group_delivery_own"/>
+        <field name="perm_read">1</field>
+        <field name="perm_write">1</field>
+        <field name="perm_create">1</field>
+        <field name="perm_unlink">1</field>
+    </record>
+    <record model="ir.model.access" id="leader_rights">
+        <field name="name">Delivery Access Rights</field>
+        <field name="model_id" ref="model_sale_order_delivery"/>
+        <field name="group_id" ref="group_delivery_leader"/>
+        <field name="perm_read">1</field>
+        <field name="perm_write">1</field>
+        <field name="perm_create">1</field>
+        <field name="perm_unlink">1</field>
+    </record>
+    <record model="ir.model.access" id="admin_rights">
+        <field name="name">Delivery Access Rights</field>
+        <field name="model_id" ref="model_sale_order_delivery"/>
+        <field name="group_id" ref="group_delivery_admin"/>
+        <field name="perm_read">1</field>
+        <field name="perm_write">1</field>
+        <field name="perm_create">1</field>
+        <field name="perm_unlink">1</field>
+    </record>
+
+
+</odoo>

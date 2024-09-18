@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="inco_terms_tree_view" model="ir.ui.view">
+        <field name="name">inco terms tree</field>
+        <field name="model">inco.terms</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="inco_terms_view" model="ir.actions.act_window">
+        <field name="name">Incoterms</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">inco.terms</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <menuitem
+        id="inco_terms_menu"
+        name="Incoterms"
+        action="inco_terms_view"
+        parent="sale.menu_sale_config"
+        sequence="3"/>
+
+
+</odoo>
